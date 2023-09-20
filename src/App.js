@@ -9,6 +9,7 @@ import Menu1_1 from "./component/Menu1/Menu1_1";
 import Menu1_2 from "./component/Menu1/Menu1_2";
 import Menu2_1 from "./component/Menu2/Menu2_1";
 import Wrong from './component/Wrong';
+import About from './component/About';
 
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
         <Route path="*" element={<Wrong />}></Route>
         <Route path="Login" element={<Login />}></Route>
         <Route path="Profile" element={<Profile />}></Route>
+        <Route path="About" element={<About />}></Route>
         <Route path="Menu1_1" element={<Menu1_1 />}></Route>
         <Route path="Menu1_2" element={<Menu1_2 />}></Route>
         <Route path="Menu2_1" element={<Menu2_1 />}></Route>
