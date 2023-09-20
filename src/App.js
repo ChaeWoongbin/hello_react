@@ -3,8 +3,12 @@ import './App.css';
 import {Link} from "react-router-dom";
 import {Route, Routes} from 'react-router-dom';
 import Home from "./component/Home";
-import Menu1 from "./component/Menu1";
-import Menu2 from "./component/Menu2";
+import Login from "./component/Login";
+import Profile from "./component/Profile";
+import Menu1_1 from "./component/Menu1/Menu1_1";
+import Menu1_2 from "./component/Menu1/Menu1_2";
+import Menu2_1 from "./component/Menu2/Menu2_1";
+import Wrong from './component/Wrong';
 
 
 function App() {
@@ -25,9 +29,12 @@ function App() {
         </a>
         <Routes>
         <Route path="/" element={<Home />}></Route>
-        <Route path="Home" element={<Home />}></Route>
-        <Route path="Menu1" element={<Menu1 />}></Route>
-        <Route path="Menu2" element={<Menu2 />}></Route>
+        <Route path="*" element={<Wrong />}></Route>
+        <Route path="Login" element={<Login />}></Route>
+        <Route path="Profile" element={<Profile />}></Route>
+        <Route path="Menu1_1" element={<Menu1_1 />}></Route>
+        <Route path="Menu1_2" element={<Menu1_2 />}></Route>
+        <Route path="Menu2_1" element={<Menu2_1 />}></Route>
       </Routes>
       </header>
     </div>
