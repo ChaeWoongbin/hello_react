@@ -5,7 +5,7 @@
 2) MUI 패키지 설치
     - npm install @mui/material @emotion/react @emotion/styled
 
-3)컴포넌트 파일 생성
+3) 컴포넌트 파일 생성
   목표) Appbar메뉴 3개
   메인화면
   로그인
