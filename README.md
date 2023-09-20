@@ -20,5 +20,9 @@
 
 4) 라우터 설정
    - npm i react-router-dom
-   - 메인화면, 로그인, 프로필, 하위1-, 하위2- 부분을 라우터로 이동 가능하게 할 것
+   - 메인화면, 로그인, 프로필, About 하위1-, 하위2- 부분을 라우터로 이동 가능하게 할 것
    - 메뉴1,2는 Drawer로 처리
+
+5) Appbar 추가
+   - npm i @mui/icons-material
+   - Home은 / , Menu1,2는 하위 1번 라우팅( Menu의 경우 추후 삭제 예정, Drawer)
