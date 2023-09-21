@@ -33,3 +33,7 @@
    - 로그인 사용시 API 통신 필요 계정정보 -> API
    - API 통신을 위한 AXOIS 설치
    - npm install axios
+
+9) Private,Public Route 구현
+   - auth_route 폴더
+   - Private, Public Route 추가
