@@ -9,6 +9,8 @@ import Menu1_2 from "./component/Menu1/Menu1_2";
 import Menu2_1 from "./component/Menu2/Menu2_1";
 import Wrong from './component/Wrong';
 import About from './component/About';
+import PrivateRoute from './component/auth_route/PrivateRoute';
+import PublicRoute from './component/auth_route/PublicRoute';
 
 
 function App() {
@@ -21,15 +23,19 @@ function App() {
         <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="Home" element={<Home />}></Route>
-        <Route path="*" element={<Wrong />}></Route>
-        <Route path="Login" element={<Login />}></Route>
-        <Route path="Profile" element={<Profile />}></Route>
-        <Route path="About" element={<About />}></Route>
-        <Route path="Menu1" element={<Menu1_1 />}></Route>
-        <Route path="Menu2" element={<Menu2_1 />}></Route>
-        <Route path="Menu1_1" element={<Menu1_1 />}></Route>
-        <Route path="Menu1_2" element={<Menu1_2 />}></Route>
-        <Route path="Menu2_1" element={<Menu2_1 />}></Route>
+        <Route path="*" element={<Wrong />}></Route>        
+        <Route element={<PrivateRoute/>}>
+          <Route path="Profile" element={<Profile />}></Route>
+          <Route path="About" element={<About />}></Route>
+          <Route path="Menu1" element={<Menu1_1 />}></Route>
+          <Route path="Menu2" element={<Menu2_1 />}></Route>
+          <Route path="Menu1_1" element={<Menu1_1 />}></Route>
+          <Route path="Menu1_2" element={<Menu1_2 />}></Route>
+          <Route path="Menu2_1" element={<Menu2_1 />}></Route>
+        </Route>
+        <Route element={<PublicRoute/>}>
+          <Route path="Login" element={<Login />}></Route>
+        </Route>
       </Routes></body>
     </div>
   );
