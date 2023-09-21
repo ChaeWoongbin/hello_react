@@ -6,7 +6,7 @@ const Profile = () => {
 
   return (
     <div className="App">
-        Profile Page
+        로그인 계정 : {localStorage.getItem('user_info')}
     </div>
   );
 }

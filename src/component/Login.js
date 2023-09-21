@@ -12,6 +12,8 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 function Copyright(props) {
   return (
@@ -31,13 +33,55 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function Login() {
-  const handleSubmit = (event) => {
+  
+  const navigate = useNavigate(); // 라우터 Navigate
+
+  // submit 로그인
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     console.log({
       user_id: data.get('user_id'),
       password: data.get('password'),
     });
+
+    // 로그인 길이가 맞지 않을 시
+    if(data.get('user_id').length < 4 | data.get('password').length < 8){
+      alert('계정 최소 길이가 맞지 않습니다.');
+      return ;
+    }
+
+    // 로그인 시도
+    let login_info = {
+      user_id : data.get('user_id'),
+      password : data.get('password')
+    }
+    
+    try{
+      // API 전송 부분
+      // const response = await axios.post( 
+      //   'http://localhost:3333/api/login/post/login_check',   { user_id:login_info.user_id, user_password:login_info.password }     
+      // );
+      //alert(response.data.message);
+    //로그인 성공
+    // api 구성 전이므로 admin/password
+    if( login_info.user_id === 'admin' && login_info.password === 'password' ){
+     //if(response.data.message === '접속 계정 확인'){
+       // 로그인 정보 저장 
+       //alert(login_info.user_id);       
+       localStorage.setItem('user_info', login_info.user_id);
+       //로그인 후 Main 화면 ( Navigate )
+       navigate("/");
+     }
+     //로그인 실패
+     else{
+      alert('아이디 비밀번호 정보가 일치하지 않습니다.');
+      return ;
+     }
+
+    } catch (e) {
+      console.log(e)
+    }
   };
 
   return (

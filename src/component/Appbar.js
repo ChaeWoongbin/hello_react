@@ -14,11 +14,15 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import {Link} from "react-router-dom";
 import { ThemeProvider, createTheme } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 const pages = ['Home', 'Menu1', 'Menu2', 'About'];
 const settings = ['Profile', 'Logout'];
 
 function Appbar() {
+
+  const navigate = useNavigate(); // 라우터 Navigate
+
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -35,6 +39,16 @@ function Appbar() {
 
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
+  };
+
+  const LoginClick = () => {
+    navigate('/Login');
+  };
+  
+  const LogOutClick = () => {
+    localStorage.removeItem('user_info');
+    alert('로그아웃 되었습니다.');
+    navigate('/');
   };
 
   //theme
@@ -144,11 +158,22 @@ const darkTheme = createTheme({
               </Button>
             ))}
           </Box>
-
-          <Box sx={{ flexGrow: 0 }}>
-                <Button variant="login">Login</Button>
-          </Box>
-
+          { (localStorage.getItem('user_info') || '').length > 1
+            ?
+            <div>
+              <Box sx={{ flexGrow: 0 }}>
+                <Button variant="LogOut" onClick={LogOutClick}>LogOut</Button>
+                
+              </Box>
+            </div>
+            :
+              <Box sx={{ flexGrow: 0 }}>
+                <Button variant="login" onClick={LoginClick}>Login</Button>
+              </Box>
+          }
+          
+          { (localStorage.getItem('user_info') || '').length > 1
+            ?
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
@@ -182,6 +207,8 @@ const darkTheme = createTheme({
               ))}
             </Menu>
           </Box>
+          :<div></div>
+              }
         </Toolbar>
       </Container>
     </AppBar>
