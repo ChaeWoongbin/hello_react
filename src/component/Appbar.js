@@ -93,14 +93,39 @@ const darkTheme = createTheme({
     },
   });
 
-  const list = (anchor: Anchor) => (
+  const list = (anchor) => (
     <Box
       sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
       role="presentation"
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
-      <List>
+    { anchor === 'left' ? 
+    <div><List>
+    {['left','Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+      <ListItem key={text} disablePadding>
+        <ListItemButton>
+          <ListItemIcon>
+            {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+          </ListItemIcon>
+          <ListItemText primary={text} />
+        </ListItemButton>
+      </ListItem>
+    ))}
+  </List>
+  <Divider /></div>
+  : 
+  <div>
+  <List>
+  <ListItem key='other' disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                <InboxIcon />
+              </ListItemIcon>
+              <ListItemText primary='other' />
+            </ListItemButton>
+          </ListItem>
+  <Divider />
         {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
           <ListItem key={text} disablePadding>
             <ListItemButton>
@@ -125,6 +150,10 @@ const darkTheme = createTheme({
           </ListItem>
         ))}
       </List>
+  </div>
+  }
+
+      
     </Box>
   );
 
@@ -197,7 +226,7 @@ const darkTheme = createTheme({
         <React.Fragment key={anchor}>
           <Button onClick={toggleDrawer(anchor, true)}>{anchor}</Button>
           <Drawer
-            anchor={anchor}
+            anchor='left'
             open={state[anchor]}
             onClose={toggleDrawer(anchor, false)}
           >
