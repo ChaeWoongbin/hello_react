@@ -100,7 +100,55 @@ const darkTheme = createTheme({
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
-    { anchor === 'left' ? 
+     {
+        anchor === 'left' &&
+        <div><List>
+        {['left','Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+          <ListItem key={text} disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+              </ListItemIcon>
+              <ListItemText primary={text} />
+            </ListItemButton>
+          </ListItem>
+        ))}
+      </List>
+      <Divider /></div>
+      }{
+        anchor === 'right' &&
+        <div><List>
+        {['right','Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+          <ListItem key={text} disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+              </ListItemIcon>
+              <ListItemText primary={text} />
+            </ListItemButton>
+          </ListItem>
+        ))}
+        </List>
+        <Divider /></div>
+         }{
+        anchor === 'top' &&
+        <div><List>
+        {['top','Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+          <ListItem key={text} disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+              </ListItemIcon>
+              <ListItemText primary={text} />
+            </ListItemButton>
+          </ListItem>
+        ))}
+        </List>
+        <Divider /></div>
+
+     }
+
+    {/* { anchor === 'left' ? 
     <div><List>
     {['left','Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
       <ListItem key={text} disablePadding>
@@ -151,7 +199,7 @@ const darkTheme = createTheme({
         ))}
       </List>
   </div>
-  }
+  } */}
 
       
     </Box>
