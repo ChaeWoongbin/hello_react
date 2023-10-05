@@ -6,7 +6,6 @@ import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
@@ -21,13 +20,18 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
+import MenuIcon from '@mui/icons-material/Menu';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
+import TextScriptIcon from '@mui/icons-material/TextSnippet';
 import { Drawer } from '@mui/material';
 
 
 const pages = ['Home', 'Menu1', 'Menu2', 'About'];
 const settings = ['Profile', 'Logout'];
+
+// const M1_page = [key:[], value:[]];
+const M1_page = [{key:'Menu1_1',value:<TextScriptIcon/>}, {key:'Menu1_2',value:<MailIcon/>}];
 
 function Appbar() {
 
@@ -103,17 +107,30 @@ const darkTheme = createTheme({
      {
         anchor === 'left' &&
         <div><List>
-        {['left','Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem key={text} disablePadding>
+          <ListItemButton>
+              <ListItemIcon>
+                <MenuIcon/>
+              </ListItemIcon>
+            <ListItemText primary='Left'/>
+          </ListItemButton>
+        <Divider />
+        {M1_page.map(({key,value}) => (
+          
+          <Link style={{textDecoration: "none", color:"white"}} to={`/${key}`}>      
+          <ListItem key={key} disablePadding>
             <ListItemButton>
               <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                {/* {index % 2 === 0 ? <InboxIcon /> : <MailIcon />} */}
+                {value}
               </ListItemIcon>
-              <ListItemText primary={text} />
+              <ListItemText primary={key}>              
+              </ListItemText>
             </ListItemButton>
           </ListItem>
+          </Link>
+          
         ))}
-      </List>
+     </List>
       <Divider /></div>
       }{
         anchor === 'right' &&
