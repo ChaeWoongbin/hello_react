@@ -37,7 +37,12 @@ const M1_page = [{key:'Menu1_1',value:<TextScriptIcon/>}, {key:'Menu1_2',value:<
 function Appbar() {
 
   function page(){
-    const pages = ['Home', 'Menu1', 'Menu2', 'About'];
+    //const pages = ['Home', 'Menu1', 'Menu2', 'About'];
+    const pages = [];
+    pages.push('Home');
+    pages.push('Menu1');
+    pages.push('Menu2');
+    pages.push('About');
     return pages;
   }
   
